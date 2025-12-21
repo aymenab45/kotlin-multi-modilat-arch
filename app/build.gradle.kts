@@ -1,71 +1,65 @@
 plugins {
-    id(BuildPlugins.ANDROID_APPLICATION)
-    id(BuildPlugins.KOTLIN_ANDROID)
-    id(BuildPlugins.KOTLIN_COMPOSE)
+    id(plugs.BuildPlugins.ANDROID_APPLICATION)
+    id(plugs.BuildPlugins.KOTLIN_ANDROID)
+    id(plugs.BuildPlugins.KOTLIN_COMPOSE)
+    id(plugs.BuildPlugins.ANDROID)
+    id(plugs.BuildPlugins.KSP)
 }
 
 android {
-    namespace = BuildConfig.APPLICATION_ID
-    compileSdk = BuildConfig.COMPILE_SDK
+    namespace = build.BuildConfig.APPLICATION_ID
+    compileSdk = build.BuildConfig.COMPILE_SDK
 
 
     defaultConfig {
-        applicationId = BuildConfig.APPLICATION_ID
-        minSdk = BuildConfig.MIN_SDK
-        targetSdk = BuildConfig.TARGET_SDK
-        versionCode = ReleaseConfig.VERSION_CODE
-        versionName = ReleaseConfig.VERSION_NAME
+        applicationId = build.BuildConfig.APPLICATION_ID
+        minSdk = build.BuildConfig.MIN_SDK
+        targetSdk = build.BuildConfig.TARGET_SDK
+        versionCode = release.ReleaseConfig.VERSION_CODE
+        versionName = release.ReleaseConfig.VERSION_NAME
 
-        testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunner = test.TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+
+    signingConfigs {
+        sigining.BuildSigning.Release(project).create(this)
+        sigining.BuildSigning.ReleaseExternalQa(project).create(this)
+        sigining.BuildSigning.Debug(project).create(this)
     }
 
     buildTypes {
-        getByName(BuildTypes.DEBUG) {
-            applicationIdSuffix = Build.Debug.applicationIdSuffix
-            versionNameSuffix = Build.Debug.versionNameSuffix
-            isMinifyEnabled = Build.Debug.isMinifyEnabled
-            isDebuggable = Build.Debug.isDebuggable
-            enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
-        }
 
-        // we use create only with the new custom build type
-        create(BuildTypes.RELEASE_EXTERNAL_QA){
-            applicationIdSuffix = Build.ReleaseExternalQa.applicationIdSuffix
-            versionNameSuffix = Build.ReleaseExternalQa.versionNameSuffix
-            isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
-            isDebuggable = Build.ReleaseExternalQa.isDebuggable
-            enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
-        }
-
-        getByName(BuildTypes.RELEASE) {
+        build.BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            isMinifyEnabled = Build.Release.isMinifyEnabled
-            isDebuggable = Build.Release.isDebuggable
-            enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
-
+            signingConfig = signingConfigs.getByName(sigining.SigningTypes.RELEASE)
+        }
+        build.BuildCreator.Debug(project).create(this).apply {
+            signingConfig = signingConfigs.getByName(sigining.SigningTypes.DEBUG)
+        }
+       build.BuildCreator.ReleaseExternalQa(project).create(this).apply {
+            signingConfig = signingConfigs.getByName(sigining.SigningTypes.RELEASE_EXTERNAL_QA)
         }
 
+
     }
-    flavorDimensions.add(BuildDimensions.APP)
-    flavorDimensions.add(BuildDimensions.STORE)
+    flavorDimensions.add(build.BuildDimensions.APP)
+    flavorDimensions.add(build.BuildDimensions.STORE)
     productFlavors {
-        BuildFlavor.Google.create(this)
-        BuildFlavor.Huawei.create(this)
-        BuildFlavor.Driver.create(this)
-        BuildFlavor.Client.create(this)
+        flavors.BuildFlavor.Google.create(this)
+        flavors.BuildFlavor.Huawei.create(this)
+        flavors.BuildFlavor.Driver.create(this)
+        flavors.BuildFlavor.Client.create(this)
     }
 
 
 
-    signingConfigs {
 
-        BuildSigning.Debug.create(this)
-        BuildSigning.Release.create(this)
-        BuildSigning.ReleaseExternalQa.create(this)
-    }
 
 
     compileOptions {
@@ -77,24 +71,25 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig =true
     }
 }
 
 dependencies {
-    implementation(Dependencies.ANDROIDX_CORE)
-    implementation(Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
-    implementation(Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
-    implementation(Dependencies.ANDROIDX_MATERIAL3)
-    implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
-    implementation(Dependencies.ANDROIDX_UI)
+    implementation(deps.Dependencies.ANDROIDX_CORE)
+    implementation(deps.Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
+    implementation(deps.Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
+    implementation(deps.Dependencies.ANDROIDX_MATERIAL3)
+    implementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
+    implementation(deps.Dependencies.ANDROIDX_UI_GRAPHICS)
+    implementation(deps.Dependencies.ANDROIDX_UI)
 
-    testImplementation(TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(TestDependencies.ANDROIDX_ESPRESSO_CORE)
+    testImplementation(test.TestDependencies.ANDROIDX_JUNIT)
+    androidTestImplementation(test.TestDependencies.ANDROIDX_JUNIT)
+    androidTestImplementation(test.TestDependencies.ANDROIDX_ESPRESSO_CORE)
 
-    androidTestImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
+    androidTestImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
 
-    debugImplementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    debugImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
+    debugImplementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
+    debugImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
 }
