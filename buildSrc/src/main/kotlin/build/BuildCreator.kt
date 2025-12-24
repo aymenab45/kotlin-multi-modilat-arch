@@ -1,6 +1,7 @@
 package build
 
 import com.android.build.api.dsl.ApplicationBuildType
+import com.android.build.api.dsl.LibraryBuildType
 import extensions.buildConfigBooleanField
 import extensions.buildConfigIntField
 import extensions.buildConfigStringField
@@ -9,6 +10,7 @@ import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
 sealed class BuildCreator(val buildType: String) {
     abstract fun create(namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationBuildType>): ApplicationBuildType
+    abstract fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryBuildType>): LibraryBuildType
 
     class Debug (private val project: Project) : BuildCreator(BuildTypes.DEBUG) {
         override fun create(namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationBuildType>): ApplicationBuildType {
@@ -39,6 +41,14 @@ sealed class BuildCreator(val buildType: String) {
             }
         }
 
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryBuildType>): LibraryBuildType {
+            return namedDomainObjectContainer.getByName(buildType) {
+
+                isMinifyEnabled = Build.Debug.isMinifyEnabled
+                enableUnitTestCoverage = Build.Debug.enableUnitTestCoverage
+            }
+        }
+
     }
 
     class Release(private val project: Project) : BuildCreator(BuildTypes.RELEASE) {
@@ -63,6 +73,14 @@ sealed class BuildCreator(val buildType: String) {
                     BuildVariables.MAP_KEY,
                     project.getLocalProperty("PROD_MAP_KEY")
                 )
+            }
+        }
+
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryBuildType>): LibraryBuildType {
+            return namedDomainObjectContainer.getByName(buildType) {
+                isMinifyEnabled = Build.Release.isMinifyEnabled
+                enableUnitTestCoverage = Build.Release.enableUnitTestCoverage
+
             }
         }
     }
@@ -94,5 +112,15 @@ sealed class BuildCreator(val buildType: String) {
            )
        }
         }
+
+        override fun createLibrary(namedDomainObjectContainer: NamedDomainObjectContainer<LibraryBuildType>): LibraryBuildType {
+            return  namedDomainObjectContainer.create(buildType) {
+
+                isMinifyEnabled = Build.ReleaseExternalQa.isMinifyEnabled
+
+                enableUnitTestCoverage = Build.ReleaseExternalQa.enableUnitTestCoverage
+
+        }
     }
+}
 }

@@ -1,9 +1,22 @@
+import deps.androidX
+import deps.debugImplementation
+import deps.hilt
+import deps.loginModule
+import deps.okHttp
+import deps.retrofit
+import deps.room
+
+import deps.testAndroidImplementation
+import deps.testImplementation
+
+
 plugins {
     id(plugs.BuildPlugins.ANDROID_APPLICATION)
     id(plugs.BuildPlugins.KOTLIN_ANDROID)
     id(plugs.BuildPlugins.KOTLIN_COMPOSE)
     id(plugs.BuildPlugins.ANDROID)
     id(plugs.BuildPlugins.KSP)
+
 }
 
 android {
@@ -50,16 +63,13 @@ android {
     }
     flavorDimensions.add(build.BuildDimensions.APP)
     flavorDimensions.add(build.BuildDimensions.STORE)
+
     productFlavors {
         flavors.BuildFlavor.Google.create(this)
         flavors.BuildFlavor.Huawei.create(this)
         flavors.BuildFlavor.Driver.create(this)
         flavors.BuildFlavor.Client.create(this)
     }
-
-
-
-
 
 
     compileOptions {
@@ -76,20 +86,15 @@ android {
 }
 
 dependencies {
-    implementation(deps.Dependencies.ANDROIDX_CORE)
-    implementation(deps.Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
-    implementation(deps.Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
-    implementation(deps.Dependencies.ANDROIDX_MATERIAL3)
-    implementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    implementation(deps.Dependencies.ANDROIDX_UI_GRAPHICS)
-    implementation(deps.Dependencies.ANDROIDX_UI)
+    loginModule()
+    androidX()
+    testImplementation()
+    testAndroidImplementation()
+    debugImplementation()
+    hilt()
+    room()
+    retrofit()
+    okHttp()
 
-    testImplementation(test.TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(test.TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(test.TestDependencies.ANDROIDX_ESPRESSO_CORE)
 
-    androidTestImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
-
-    debugImplementation(deps.Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    debugImplementation(test.TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
 }

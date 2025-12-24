@@ -17,5 +17,6 @@ object DependenciesVersions {
     const val OKHTTP = "5.0.0-alpha.2"
     const val HILT = "2.44"
     const val ROOM = "2.6.1"
-    const val KSP = "2.0.21-1.0.27"
+    const val GSON = "2.10.1"
+    const val KSP = "2.0.21-1.0.25"
 }
