@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-
 import com.example.multimodularapplication.ui.theme.MultiModularApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,8 +22,10 @@ class MainActivity : ComponentActivity() {
             MultiModularApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
                     )
+
+                    println("dfdfdf")
                 }
             }
         }
@@ -32,7 +33,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting( modifier: Modifier = Modifier) {
+fun Greeting(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(
             text = BuildConfig.BASE_URL,
@@ -46,7 +47,6 @@ fun Greeting( modifier: Modifier = Modifier) {
         Text(
             text = BuildConfig.MAP_KEY,
         )
-
     }
 }
 

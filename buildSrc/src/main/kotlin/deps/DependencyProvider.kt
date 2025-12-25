@@ -25,7 +25,10 @@ fun DependencyHandler.room(){
 
 fun DependencyHandler.hilt(){
     kspImplementation(Dependencies.HILT_COMPILER)
+    kspImplementation(Dependencies.HILT_AGP)
     implementation(Dependencies.HILT_ANDROID)
+    implementation(Dependencies.HILT_COMPOSE_NAVIGATION)
+    implementation(Dependencies.HILT_COMPOSE)
 }
 
 
@@ -44,6 +47,18 @@ fun DependencyHandler.loginModule() {
 }
 fun DependencyHandler.settingModule(){
     moduleImplementation(project(":features:setting"))
+}
+
+fun DependencyHandler.dataModule(){
+    moduleImplementation(project(":core:data"))
+}
+
+fun DependencyHandler.domainModule(){
+    moduleImplementation(project(":core:domain"))
+}
+
+fun DependencyHandler.presentationModule(){
+    moduleImplementation(project(":core:presentation"))
 }
 
 fun DependencyHandler.testImplementation(){

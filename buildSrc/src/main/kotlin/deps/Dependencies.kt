@@ -19,6 +19,11 @@ object Dependencies {
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${DependenciesVersions.OKHTTP}"
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${DependenciesVersions.HILT}"
     const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${DependenciesVersions.HILT}"
+    const val HILT_COMPOSE_NAVIGATION = "androidx.hilt:hilt-navigation-compose:${DependenciesVersions.HILT_COMPOSE}"
+    const val HILT_COMPOSE = "androidx.hilt:hilt-work:${DependenciesVersions.HILT_COMPOSE}"
+    const val HILT_AGP = "com.google.dagger:hilt-android-gradle-plugin:${DependenciesVersions.HILT}"
+
+
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${DependenciesVersions.ROOM}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
     const val ROOM_KTX = "androidx.room:room-ktx:${DependenciesVersions.ROOM}"

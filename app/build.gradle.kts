@@ -1,11 +1,13 @@
 import deps.androidX
+import deps.dataModule
 import deps.debugImplementation
+import deps.domainModule
 import deps.hilt
 import deps.loginModule
 import deps.okHttp
+import deps.presentationModule
 import deps.retrofit
 import deps.room
-
 import deps.testAndroidImplementation
 import deps.testImplementation
 
@@ -16,13 +18,13 @@ plugins {
     id(plugs.BuildPlugins.KOTLIN_COMPOSE)
     id(plugs.BuildPlugins.ANDROID)
     id(plugs.BuildPlugins.KSP)
-
+    id(plugs.BuildPlugins.KTLINT)
+    id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 }
 
 android {
     namespace = build.BuildConfig.APPLICATION_ID
     compileSdk = build.BuildConfig.COMPILE_SDK
-
 
     defaultConfig {
         applicationId = build.BuildConfig.APPLICATION_ID
@@ -48,18 +50,16 @@ android {
         build.BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             signingConfig = signingConfigs.getByName(sigining.SigningTypes.RELEASE)
         }
         build.BuildCreator.Debug(project).create(this).apply {
             signingConfig = signingConfigs.getByName(sigining.SigningTypes.DEBUG)
         }
-       build.BuildCreator.ReleaseExternalQa(project).create(this).apply {
+        build.BuildCreator.ReleaseExternalQa(project).create(this).apply {
             signingConfig = signingConfigs.getByName(sigining.SigningTypes.RELEASE_EXTERNAL_QA)
         }
-
-
     }
     flavorDimensions.add(build.BuildDimensions.APP)
     flavorDimensions.add(build.BuildDimensions.STORE)
@@ -71,7 +71,6 @@ android {
         flavors.BuildFlavor.Client.create(this)
     }
 
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -81,11 +80,14 @@ android {
     }
     buildFeatures {
         compose = true
-        buildConfig =true
+        buildConfig = true
     }
 }
 
 dependencies {
+    domainModule()
+    dataModule()
+    presentationModule()
     loginModule()
     androidX()
     testImplementation()
@@ -95,6 +97,4 @@ dependencies {
     room()
     retrofit()
     okHttp()
-
-
 }

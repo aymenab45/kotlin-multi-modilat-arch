@@ -25,3 +25,7 @@ include(":lib")
 
 include(":features:login")
 include(":features:setting")
+
+include(":core:data")
+include(":core:domain")
+include(":core:presentation")
