@@ -7,4 +7,8 @@ object BuildVariables {
     const val DB_VERSION ="DB_VERSION"
     const val MAP_KEY ="MAP_KEY"
 
+    const val DEV_PIN_CERTIFICATE = "DEV_PIN_CERTIFICATE"
+    const val RELEASE_PIN_CERTIFICATE = "RELEASE_PIN_CERTIFICATE"
+
+
 }

@@ -25,5 +25,4 @@ dependencies {
     room()
     okHttp()
     retrofit()
-
 }

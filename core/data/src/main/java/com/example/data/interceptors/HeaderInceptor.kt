@@ -1,4 +1,4 @@
-package com.example.data
+package com.example.data.interceptors
 
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -16,11 +16,11 @@ const val JSON = "application/json"
 const val ARABIC_LANGUAGE = "ar-SA"
 const val ENGLISH_LANGUAGE = "en-US"
 
-class HeaderInceptor(
+class HeaderInterceptor(
     private val clientId: String,
     private val accessToken: () -> String?,
     private val refreshToken: () -> String?,
-    private val language: () -> Locale
+    private val language: () -> Locale,
 
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -41,6 +41,5 @@ class HeaderInceptor(
         }
 
         return chain.proceed(builder.build())
-
     }
 }
