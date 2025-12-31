@@ -12,6 +12,8 @@ object Dependencies {
     const val ANDROIDX_UI_TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${DependenciesVersions.COMPOSE_UI}"
     const val ANDROIDX_MATERIAL3= "androidx.compose.material3:material3:${DependenciesVersions.MATERIAL3}"
 
+    const val WORK_RUNTIME = "androidx.work:work-runtime:${DependenciesVersions.RUN_TIME}"
+
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${DependenciesVersions.RETROFIT}"
     const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${DependenciesVersions.RETROFIT}"
     const val GSON = "com.google.code.gson:gson:${DependenciesVersions.GSON}"
@@ -27,6 +29,10 @@ object Dependencies {
     const val ROOM_RUNTIME = "androidx.room:room-runtime:${DependenciesVersions.ROOM}"
     const val ROOM_COMPILER = "androidx.room:room-compiler:${DependenciesVersions.ROOM}"
     const val ROOM_KTX = "androidx.room:room-ktx:${DependenciesVersions.ROOM}"
+
+    const val DATASTORE = "androidx.datastore:datastore:${DependenciesVersions.DATA_STORE}"
+    const val KOTLIN_COLLECTIONS = "org.jetbrains.kotlinx:kotlinx-collections-immutable:${DependenciesVersions.KOTLIN_COLLECTIONS}"
+    const val KOTLIN_SERILAIZATIONS = "org.jetbrains.kotlinx:kotlinx-serialization-json:${DependenciesVersions.KOTLIN_SERIALIZATIONS}"
 }
 
 

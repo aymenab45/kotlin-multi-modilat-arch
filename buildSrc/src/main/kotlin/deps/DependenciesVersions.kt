@@ -2,6 +2,7 @@ package deps
 
 object DependenciesVersions {
     const val AGP = "8.13.1"
+    const val RUN_TIME = "2.7.1"
     const val KOTLIN = "2.0.21"
     const val CORE_KTX = "1.17.0"
     const val JUNIT = "4.13.2"
@@ -21,4 +22,8 @@ object DependenciesVersions {
     const val ROOM = "2.6.1"
     const val GSON = "2.10.1"
     const val KSP = "2.0.21-1.0.25"
+
+    const val DATA_STORE = "1.1.1"
+    const val KOTLIN_COLLECTIONS = "0.3.7"
+    const val KOTLIN_SERIALIZATIONS = "2.0.0"
 }

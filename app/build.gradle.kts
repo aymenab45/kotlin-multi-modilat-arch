@@ -1,5 +1,6 @@
 import deps.androidX
 import deps.dataModule
+import deps.dataStoreModule
 import deps.debugImplementation
 import deps.domainModule
 import deps.hilt
@@ -85,6 +86,7 @@ android {
 }
 
 dependencies {
+    dataStoreModule()
     domainModule()
     dataModule()
     presentationModule()

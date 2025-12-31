@@ -36,7 +36,7 @@ class InterceptorModule {
             clientId = clientId,
             accessToken = accessToken,
             refreshToken = refreshToken,
-            language = language
+            language = language,
         )
     }
 
@@ -56,5 +56,4 @@ class InterceptorModule {
         }
         return interceptor
     }
-
 }

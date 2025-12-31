@@ -1,14 +1,19 @@
 package com.example.data.di
 
+import android.content.Context
 import com.aymen.debug.OkHttpClientProvider
 import com.example.data.BuildConfig
+import com.example.data.connectivity.NetworkMonitorImplementer
+import com.example.data.connectivity.NetworkMonitorInterface
 import com.example.data.constants.HEADER_INTERCEPTOR_TAG
 import com.example.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.example.data.factory.ServiceFactory
 import com.example.data.okHttp.OkHttpClientProviderInterface
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Call
 import okhttp3.Interceptor
@@ -24,6 +29,18 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun provideNetworkMonitor(@ApplicationContext context: Context): NetworkMonitorInterface {
+        return NetworkMonitorImplementer(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return Gson()
+    }
+
+    @Provides
+    @Singleton
     fun provideOkHttpClientProvider(): OkHttpClientProviderInterface {
         return OkHttpClientProvider()
     }
@@ -33,7 +50,7 @@ class NetworkModule {
     fun provideOkHttpCallFactory(
         @Named(LOGGING_INTERCEPTOR_TAG) provideHttpLogger: Interceptor,
         @Named(HEADER_INTERCEPTOR_TAG) provideHeaderInterceptor: Interceptor,
-        okHttpClientProvider: OkHttpClientProviderInterface
+        okHttpClientProvider: OkHttpClientProviderInterface,
     ): Call.Factory {
         return okHttpClientProvider.getOkHttpClient(BuildConfig.DEV_PIN_CERTIFICATE)
             .addInterceptor(provideHttpLogger).addInterceptor(provideHeaderInterceptor)
@@ -61,6 +78,3 @@ class NetworkModule {
         return ServiceFactory(retrofit)
     }
 }
-
-
-

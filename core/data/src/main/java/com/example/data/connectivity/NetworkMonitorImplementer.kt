@@ -7,10 +7,9 @@ import android.net.NetworkCapabilities
 class NetworkMonitorImplementer(private val context: Context) : NetworkMonitorInterface {
     private val connectivityManager: ConnectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE)
-                as ConnectivityManager
+            as ConnectivityManager
 
     override fun hasConnectivity(): Boolean {
-
         return connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
             ?.let { networkCapabilities ->
                 listOf(
@@ -18,9 +17,6 @@ class NetworkMonitorImplementer(private val context: Context) : NetworkMonitorIn
                     NetworkCapabilities.TRANSPORT_CELLULAR,
                     NetworkCapabilities.TRANSPORT_ETHERNET,
                 ).any { networkCapabilities.hasTransport(it) }
-
             } ?: false
     }
 }
-
-
