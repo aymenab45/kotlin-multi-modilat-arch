@@ -23,9 +23,15 @@ fun DependencyHandler.room(){
     implementation(Dependencies.ROOM_KTX)
 }
 fun DependencyHandler.dataStore(){
-    kspImplementation(Dependencies.DATASTORE)
+    implementation(Dependencies.DATASTORE)
     implementation(Dependencies.KOTLIN_SERILAIZATIONS)
     implementation(Dependencies.KOTLIN_COLLECTIONS)
+}
+
+fun DependencyHandler.protoDataStore() {
+    implementation(Dependencies.DATASTORE)
+    implementation(Dependencies.PROTO_BUF_JAVA_LITE)
+    implementation(Dependencies.PROTO_BUF_KOTLIN_LITE)
 }
 
 fun DependencyHandler.hilt(){
@@ -68,6 +74,9 @@ fun DependencyHandler.presentationModule(){
 }
 fun DependencyHandler.dataStoreModule(){
     moduleImplementation(project(":core:datastore"))
+}
+fun DependencyHandler.protoDataStoreModule(){
+    moduleImplementation(project(":core:protodatastore"))
 }
 
 fun DependencyHandler.testImplementation(){

@@ -2,6 +2,7 @@ package com.example.login.data.di
 
 import com.example.data.connectivity.NetworkMonitorInterface
 import com.example.data.constants.CLIENT_ID_TAG
+import com.example.data.constants.IO_DISPATCHER_TAG
 import com.example.data.factory.ServiceFactory
 import com.example.data.source.NetworkDataSource
 import com.example.login.data.service.LoginService
@@ -46,7 +47,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideLoginMapper(@Named("") dispatcher: CoroutineDispatcher): LoginMapper {
+    fun provideLoginMapper(@Named(IO_DISPATCHER_TAG) dispatcher: CoroutineDispatcher): LoginMapper {
         return LoginMapperImplementer(dispatcher)
     }
 

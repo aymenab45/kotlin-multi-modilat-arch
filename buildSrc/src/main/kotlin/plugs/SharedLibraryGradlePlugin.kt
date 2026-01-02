@@ -23,6 +23,7 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
         plugins.apply(BuildPlugins.KOTLIN_COMPOSE)
         plugins.apply(BuildPlugins.KSP)
         plugins.apply(BuildPlugins.KTLINT)
+        plugins.apply(BuildPlugins.SERIALISATION)
     }
 
     private fun Project.addAndroidConfigurations() {

@@ -7,6 +7,7 @@ import deps.hilt
 import deps.loginModule
 import deps.okHttp
 import deps.presentationModule
+import deps.protoDataStoreModule
 import deps.retrofit
 import deps.room
 import deps.testAndroidImplementation
@@ -91,6 +92,8 @@ dependencies {
     dataModule()
     presentationModule()
     loginModule()
+    dataStoreModule()
+    protoDataStoreModule()
     androidX()
     testImplementation()
     testAndroidImplementation()

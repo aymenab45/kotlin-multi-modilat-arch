@@ -1,3 +1,4 @@
+import deps.dataStore
 import deps.debugImplementation
 import deps.testAndroidImplementation
 import deps.testImplementation
@@ -14,7 +15,7 @@ android {
 }
 
 dependencies {
-
+    dataStore()
     testImplementation()
     testAndroidImplementation()
     debugImplementation()

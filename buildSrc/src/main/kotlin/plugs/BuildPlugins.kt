@@ -1,6 +1,5 @@
 package plugs
 
-import deps.DependenciesVersions
 
 object BuildPlugins {
     const val ANDROID_APPLICATION = "com.android.application"
@@ -11,5 +10,7 @@ object BuildPlugins {
     const val KSP = "com.google.devtools.ksp"
     const val HILT = "com.google.dagger.hilt.android"
 
+    const val SERIALISATION = "org.jetbrains.kotlin.plugin.serialization"
     const val KTLINT = "ktlint-settings"
+    const val GOOGLE_PROTOBUF = "com.google.protobuf"
 }

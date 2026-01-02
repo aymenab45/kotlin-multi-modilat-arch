@@ -1,6 +1,8 @@
 import deps.debugImplementation
 import deps.hilt
 import deps.okHttp
+import deps.protoDataStore
+import deps.protoDataStoreModule
 import deps.retrofit
 import deps.room
 import deps.testAndroidImplementation
@@ -25,4 +27,5 @@ dependencies {
     room()
     okHttp()
     retrofit()
+    protoDataStoreModule()
 }
