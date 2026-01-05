@@ -26,10 +26,8 @@ class ConfigModule {
         if (language.isEmpty()) {
             return { Locale.getDefault() }
         } else {
-
             return { Locale(language) }
         }
-
     }
 
     @Provides

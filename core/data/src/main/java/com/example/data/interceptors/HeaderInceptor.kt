@@ -18,8 +18,6 @@ const val ENGLISH_LANGUAGE = "en-US"
 
 class HeaderInterceptor(
     private val clientId: String,
-    private val accessToken: () -> String?,
-    private val refreshToken: () -> String?,
     private val language: () -> Locale,
 
 ) : Interceptor {
@@ -36,10 +34,6 @@ class HeaderInterceptor(
             .addHeader(ACCEPT_HEADER, JSON)
             .addHeader(CONTENT_TYPE_HEADER, JSON)
             .addHeader(ACCEPT_LANGUAGE_HEADER, language)
-        accessToken.let {
-            builder.addHeader(AUTHORIZATION_HEADER, "Bearer $it")
-        }
-
         return chain.proceed(builder.build())
     }
 }

@@ -5,10 +5,13 @@ import com.aymen.debug.OkHttpClientProvider
 import com.example.data.BuildConfig
 import com.example.data.connectivity.NetworkMonitorImplementer
 import com.example.data.connectivity.NetworkMonitorInterface
+import com.example.data.constants.Authentication_INTERCEPTOR_TAG
+import com.example.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.example.data.constants.HEADER_INTERCEPTOR_TAG
 import com.example.data.constants.LOGGING_INTERCEPTOR_TAG
 import com.example.data.factory.ServiceFactory
 import com.example.data.okHttp.OkHttpClientProviderInterface
+import com.example.data.service.SessionService
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -47,13 +50,24 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun provideSessionService(serviceFactory: ServiceFactory): SessionService {
+        return serviceFactory.create(SessionService::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun provideOkHttpCallFactory(
         @Named(LOGGING_INTERCEPTOR_TAG) provideHttpLogger: Interceptor,
         @Named(HEADER_INTERCEPTOR_TAG) provideHeaderInterceptor: Interceptor,
+        @Named(Authentication_INTERCEPTOR_TAG) provideAuthenticationInterceptor: Interceptor,
+        @Named(CONNECTIVITY_INTERCEPTOR_TAG) provideConnectivityInterceptor: Interceptor,
         okHttpClientProvider: OkHttpClientProviderInterface,
     ): Call.Factory {
         return okHttpClientProvider.getOkHttpClient(BuildConfig.DEV_PIN_CERTIFICATE)
-            .addInterceptor(provideHttpLogger).addInterceptor(provideHeaderInterceptor)
+            .addInterceptor(provideHttpLogger)
+            .addInterceptor(provideHeaderInterceptor)
+            .addInterceptor(provideConnectivityInterceptor)
+            .addInterceptor(provideAuthenticationInterceptor)
             .retryOnConnectionFailure(true)
             .followRedirects(false)
             .followSslRedirects(false)

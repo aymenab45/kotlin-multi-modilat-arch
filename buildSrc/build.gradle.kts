@@ -17,4 +17,5 @@ dependencies{
     implementation("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.0.20-1.0.25")
     implementation("com.squareup:javapoet:1.13.0")
     implementation("org.jetbrains.kotlin:kotlin-serialization:1.9.0")
+    implementation("com.google.protobuf:protobuf-gradle-plugin:0.9.5")
 }

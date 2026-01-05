@@ -1,7 +1,7 @@
 import deps.debugImplementation
+import deps.domainModule
 import deps.hilt
 import deps.okHttp
-import deps.protoDataStore
 import deps.protoDataStoreModule
 import deps.retrofit
 import deps.room
@@ -28,4 +28,5 @@ dependencies {
     okHttp()
     retrofit()
     protoDataStoreModule()
+    domainModule()
 }

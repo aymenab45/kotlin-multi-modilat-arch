@@ -10,7 +10,6 @@ interface SessionsDataStoreInterface {
 
     suspend fun setUserId(userID: String)
 
-
     // getters
 
     suspend fun getAccessToken(): String
@@ -19,8 +18,6 @@ interface SessionsDataStoreInterface {
     suspend fun getRefreshToken(): String
     fun getRefreshTokenFlow(): Flow<String>
 
-
     suspend fun getUserID(): String
     fun getUserIDFlow(): Flow<String>
-
 }

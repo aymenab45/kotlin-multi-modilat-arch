@@ -20,7 +20,7 @@ object Dependencies {
     const val OKHTTP = "com.squareup.okhttp3:okhttp:${DependenciesVersions.OKHTTP}"
     const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${DependenciesVersions.OKHTTP}"
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${DependenciesVersions.HILT}"
-    const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${DependenciesVersions.HILT}"
+    const val HILT_COMPILER = "com.google.dagger:hilt-compiler:${DependenciesVersions.HILT}"
     const val HILT_COMPOSE_NAVIGATION = "androidx.hilt:hilt-navigation-compose:${DependenciesVersions.HILT_COMPOSE}"
     const val HILT_COMPOSE = "androidx.hilt:hilt-work:${DependenciesVersions.HILT_COMPOSE}"
     const val HILT_AGP = "com.google.dagger:hilt-android-gradle-plugin:${DependenciesVersions.HILT}"
@@ -37,6 +37,11 @@ object Dependencies {
     const val PROTO_BUF_JAVA_LITE = "com.google.protobuf:protobuf-javalite:${DependenciesVersions.PROTO_BUF_JAVA}"
     const val PROTO_BUF_KOTLIN_LITE = "com.google.protobuf:protobuf-kotlin-lite:${DependenciesVersions.PROTO_BUF_KOTLIN}"
     const val PROTO_BUF_ARTIFACT = "com.google.protobuf:protoc:${DependenciesVersions.PROTO_BUF_KOTLIN}"
+
+    const val PROTO_CMPILERS = "androidx.datastore:datastore-preferences-proto:1.1.1"
+
+
+
 }
 
 

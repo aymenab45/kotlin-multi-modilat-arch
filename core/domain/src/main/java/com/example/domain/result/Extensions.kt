@@ -1,4 +1,4 @@
-package com.example.data.result
+package com.example.domain.result
 
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive

@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.map
 class SessionsDataStoreImplementer(private val sessionDataStore: DataStore<Session>) :
     SessionsDataStoreInterface {
     override suspend fun setAccessToken(accessToken: String) {
-
         sessionDataStore.updateData { currentPreferencesData ->
             currentPreferencesData.toBuilder().setAccessToken(accessToken).build()
         }
@@ -29,7 +28,6 @@ class SessionsDataStoreImplementer(private val sessionDataStore: DataStore<Sessi
 
     override suspend fun getAccessToken(): String = sessionDataStore.data.first().accessToken
 
-
     override fun getAccessTokenFlow(): Flow<String> {
         return sessionDataStore.data.map { session ->
             session.accessToken
@@ -37,7 +35,6 @@ class SessionsDataStoreImplementer(private val sessionDataStore: DataStore<Sessi
     }
 
     override suspend fun getRefreshToken(): String = sessionDataStore.data.first().refreshToken
-
 
     override fun getRefreshTokenFlow(): Flow<String> {
         return sessionDataStore.data.map { session ->
@@ -47,11 +44,9 @@ class SessionsDataStoreImplementer(private val sessionDataStore: DataStore<Sessi
 
     override suspend fun getUserID(): String = sessionDataStore.data.first().userId
 
-
     override fun getUserIDFlow(): Flow<String> {
         return sessionDataStore.data.map { session ->
             session.userId
         }
     }
-
 }

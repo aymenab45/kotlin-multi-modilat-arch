@@ -8,6 +8,8 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import test.TestBuildConfig
 
 
@@ -54,14 +56,12 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
                     signingConfig = signingConfigs.getByName(sigining.SigningTypes.DEBUG)
                 }
                 build.BuildCreator.ReleaseExternalQa(project).createLibrary(this).apply {
-                    signingConfig = signingConfigs.getByName(sigining.SigningTypes.RELEASE_EXTERNAL_QA)
+                    signingConfig =
+                        signingConfigs.getByName(sigining.SigningTypes.RELEASE_EXTERNAL_QA)
                 }
 
 
             }
-
-
-
 
 
             flavorDimensions.add(BuildDimensions.APP)
@@ -87,9 +87,9 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
     }
 
     private fun Project.applyKotlinOptions() {
-        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-            kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_1_8.toString()
+        tasks.withType<KotlinCompile>().configureEach {
+            compilerOptions {
+                jvmTarget.set(JvmTarget.JVM_1_8)
             }
         }
     }

@@ -12,17 +12,14 @@ object SessionSerializer : Serializer<Session> {
     override val defaultValue: Session
         get() = Session.getDefaultInstance()
 
-
     override suspend fun readFrom(input: InputStream): Session =
         withContext(Dispatchers.IO) {
             return@withContext try {
                 Session.parseFrom(input)
-
             } catch (e: InvalidProtocolBufferException) {
                 e.printStackTrace()
                 defaultValue
             }
-
         }
 
     override suspend fun writeTo(t: Session, output: OutputStream) {
@@ -30,5 +27,4 @@ object SessionSerializer : Serializer<Session> {
             t.writeTo(output)
         }
     }
-
 }

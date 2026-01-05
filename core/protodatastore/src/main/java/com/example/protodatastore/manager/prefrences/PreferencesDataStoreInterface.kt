@@ -10,7 +10,6 @@ interface PreferencesDataStoreInterface {
     suspend fun setNotificationCount(notificationCount: Int)
     suspend fun setMoneyBalance(moneyBalance: Long)
 
-
     // getters
 
     suspend fun getLanguage(): String

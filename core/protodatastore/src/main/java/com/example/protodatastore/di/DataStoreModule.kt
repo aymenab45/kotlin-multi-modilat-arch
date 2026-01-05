@@ -19,33 +19,29 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-
-class DataStoreModule {
+object DataStoreModule {
 
     @Provides
     @Singleton
-    fun provideSessionDataStore(@ApplicationContext context: Context): DataStore<Session>{
+    fun provideSessionDataStore(@ApplicationContext context: Context): DataStore<Session> {
         return context.sessionDataStore
-
     }
+
     @Provides
     @Singleton
-    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences>{
+    fun providePreferencesDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
         return context.preferencesDataStore
-
     }
 
     @Provides
     @Singleton
-    fun provideSessionDataStoreManager(sessionDataStore: DataStore<Session>): SessionsDataStoreInterface{
+    fun provideSessionDataStoreManager(sessionDataStore: DataStore<Session>): SessionsDataStoreInterface {
         return SessionsDataStoreImplementer(sessionDataStore)
-
     }
+
     @Provides
     @Singleton
-    fun providePreferencesDataStoreManager(preferencesDataStore: DataStore<Preferences>): PreferencesDataStoreInterface{
+    fun providePreferencesDataStoreManager(preferencesDataStore: DataStore<Preferences>): PreferencesDataStoreInterface {
         return PreferencesDataStoreImplementer(preferencesDataStore)
-
     }
-
 }

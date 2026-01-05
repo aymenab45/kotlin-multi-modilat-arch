@@ -57,6 +57,7 @@ fun DependencyHandler.androidX(){
 fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
 }
+
 fun DependencyHandler.settingModule(){
     moduleImplementation(project(":features:setting"))
 }
@@ -78,6 +79,7 @@ fun DependencyHandler.dataStoreModule(){
 fun DependencyHandler.protoDataStoreModule(){
     moduleImplementation(project(":core:protodatastore"))
 }
+
 
 fun DependencyHandler.testImplementation(){
     testImplementation(TestDependencies.ANDROIDX_JUNIT)

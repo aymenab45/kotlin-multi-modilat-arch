@@ -12,7 +12,6 @@ class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStor
         preferencesDataStore.updateData { currentPreferencesData ->
             currentPreferencesData.toBuilder().setLanguage(language).build()
         }
-
     }
 
     override suspend fun setIsAppLockEnabled(isAppLockEnabled: Boolean) {
@@ -25,7 +24,6 @@ class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStor
         preferencesDataStore.updateData { currentPreferencesData ->
             currentPreferencesData.toBuilder().setNotificationCount(notificationCount).build()
         }
-
     }
 
     override suspend fun setMoneyBalance(moneyBalance: Long) {
@@ -36,7 +34,6 @@ class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStor
 
     override suspend fun getLanguage(): String = preferencesDataStore.data.first().language
 
-
     override fun getLanguageFlow(): Flow<String> {
         return preferencesDataStore.data.map { preferences ->
             preferences.language
@@ -45,7 +42,6 @@ class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStor
 
     override suspend fun isAppLockEnabled(): Boolean =
         preferencesDataStore.data.first().isAppLockEnabled
-
 
     override fun isAppLockEnabledFlow(): Flow<Boolean> {
         return preferencesDataStore.data.map { preferences ->
@@ -56,7 +52,6 @@ class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStor
     override suspend fun getNotificationCount(): Int =
         preferencesDataStore.data.first().notificationCount
 
-
     override fun getNotificationCountFlow(): Flow<Int> {
         return preferencesDataStore.data.map { preferences ->
             preferences.notificationCount
@@ -65,11 +60,9 @@ class PreferencesDataStoreImplementer(private val preferencesDataStore: DataStor
 
     override suspend fun getMoneyBalance(): Long = preferencesDataStore.data.first().moneyBalance
 
-
     override fun getMoneyBalanceFlow(): Flow<Long> {
         return preferencesDataStore.data.map { preferences ->
             preferences.moneyBalance
         }
     }
-
 }

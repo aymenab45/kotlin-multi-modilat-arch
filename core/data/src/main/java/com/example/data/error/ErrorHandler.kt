@@ -1,17 +1,7 @@
 package com.example.data.error
 
-import com.example.data.model.ErrorMessage
 import com.example.data.response.ErrorResponse
 import com.google.gson.Gson
-
-// mapping errorResponse to ErrorMessage model
-fun ErrorResponse.toDomain(code: Int): ErrorMessage {
-    return ErrorMessage(
-        errorCode = code,
-        errorMessage = errorMessage.orEmpty(),
-        errorFieldList = errorFieldList ?: emptyList(),
-    )
-}
 
 // create default error response
 
