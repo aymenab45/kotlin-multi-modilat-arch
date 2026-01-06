@@ -4,6 +4,14 @@ object DependenciesVersions {
     const val AGP = "8.13.1"
     const val RUN_TIME = "2.7.1"
     const val KOTLIN = "2.0.21"
+
+    const val APP_COMPAT = "1.7.0"
+    const val MATERIAL = "1.12.0"
+    const val ANDROIDX_ACTIVITY = "1.9.1"
+
+    const val COMPOSE_MATERIAL = "1.6.8"
+    const val COMPOSE_COMPILER = "1.5.15"
+    const val COMPOSE_RUNTIME = "2.4.2"
     const val CORE_KTX = "1.17.0"
     const val JUNIT = "4.13.2"
     const val JUNIT_VERSION = "1.3.0"

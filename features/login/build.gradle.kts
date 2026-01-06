@@ -11,15 +11,21 @@ import plugs.SharedLibraryGradlePlugin
 
 plugins {
     id(plugs.BuildPlugins.ANDROID_LIBRARY)
+    id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 }
 
 apply<SharedLibraryGradlePlugin>()
 
 android {
     namespace = "com.example.login"
+
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
+
     dataModule()
     domainModule()
     androidX()

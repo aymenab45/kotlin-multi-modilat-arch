@@ -12,7 +12,17 @@ object Dependencies {
     const val ANDROIDX_UI_TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${DependenciesVersions.COMPOSE_UI}"
     const val ANDROIDX_MATERIAL3= "androidx.compose.material3:material3:${DependenciesVersions.MATERIAL3}"
 
+    const val COMPOSE_MATERIAL =
+        "androidx.compose.material:material:${DependenciesVersions.COMPOSE_MATERIAL}"
+    const val COMPOSE_COMPILER =
+        "androidx.compose.compiler:compiler:${DependenciesVersions.COMPOSE_COMPILER}"
+    const val COMPOSE_RUNTIME = "androidx.lifecycle:lifecycle-runtime-compose:${DependenciesVersions.COMPOSE_RUNTIME}"
+
     const val WORK_RUNTIME = "androidx.work:work-runtime:${DependenciesVersions.RUN_TIME}"
+
+    const val APP_COMPAT = "androidx.appcompat:appcompat:${DependenciesVersions.APP_COMPAT}"
+    const val MATERIAL = "com.google.android.material:material:${DependenciesVersions.MATERIAL}"
+    const val ANDROIDX_ACTIVITY = "androidx.activity:activity-ktx:${DependenciesVersions.ANDROIDX_ACTIVITY}"
 
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${DependenciesVersions.RETROFIT}"
     const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${DependenciesVersions.RETROFIT}"

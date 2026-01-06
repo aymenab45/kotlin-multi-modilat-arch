@@ -3,8 +3,7 @@ package com.example.domain.usecase
 import com.example.domain.model.ErrorMessage
 import com.example.domain.result.OutCome
 
-
-abstract class AsyncUseCase<I,R> : UseCase<R> {
+abstract class AsyncUseCase<I, R> : UseCase<R> {
     private lateinit var success: suspend (R) -> Unit
     private lateinit var empty: suspend () -> Unit
     private lateinit var error: suspend (ErrorMessage) -> Unit
@@ -13,7 +12,7 @@ abstract class AsyncUseCase<I,R> : UseCase<R> {
         input: I,
         success: suspend (R) -> Unit = {},
         empty: suspend () -> Unit = {},
-        error: suspend (ErrorMessage) -> Unit = {}
+        error: suspend (ErrorMessage) -> Unit = {},
     ) {
         this.success = success
         this.empty = empty

@@ -6,12 +6,12 @@ import com.example.data.error.getErrorResponse
 import com.example.data.interceptors.NoConnectivityException
 import com.example.data.mapper.toDomain
 import com.example.data.response.ErrorResponse
-import com.example.domain.result.OutCome
 import com.example.data.source.DataSource.Companion.NO_INTERNET
 import com.example.data.source.DataSource.Companion.SEE_OTHERS
 import com.example.data.source.DataSource.Companion.SSL_PINNING
 import com.example.data.source.DataSource.Companion.TIMEOUT
 import com.example.data.source.DataSource.Companion.UNKNOWN
+import com.example.domain.result.OutCome
 import com.google.gson.Gson
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive
