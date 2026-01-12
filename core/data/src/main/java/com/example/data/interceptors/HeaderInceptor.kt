@@ -17,7 +17,7 @@ const val ARABIC_LANGUAGE = "ar-SA"
 const val ENGLISH_LANGUAGE = "en-US"
 
 class HeaderInterceptor(
-    private val clientId: String,
+
     private val language: () -> Locale,
 
 ) : Interceptor {
@@ -29,9 +29,7 @@ class HeaderInterceptor(
         } else {
             ARABIC_LANGUAGE
         }
-
-        builder.addHeader(CLIENT_ID_HEADER, clientId)
-            .addHeader(ACCEPT_HEADER, JSON)
+        builder.addHeader(ACCEPT_HEADER, JSON)
             .addHeader(CONTENT_TYPE_HEADER, JSON)
             .addHeader(ACCEPT_LANGUAGE_HEADER, language)
         return chain.proceed(builder.build())

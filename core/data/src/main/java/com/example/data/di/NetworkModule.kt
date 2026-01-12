@@ -6,6 +6,7 @@ import com.example.data.BuildConfig
 import com.example.data.connectivity.NetworkMonitorImplementer
 import com.example.data.connectivity.NetworkMonitorInterface
 import com.example.data.constants.Authentication_INTERCEPTOR_TAG
+import com.example.data.constants.BASE_URL
 import com.example.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.example.data.constants.HEADER_INTERCEPTOR_TAG
 import com.example.data.constants.LOGGING_INTERCEPTOR_TAG
@@ -18,10 +19,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Call
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -62,7 +63,7 @@ class NetworkModule {
         @Named(Authentication_INTERCEPTOR_TAG) provideAuthenticationInterceptor: Interceptor,
         @Named(CONNECTIVITY_INTERCEPTOR_TAG) provideConnectivityInterceptor: Interceptor,
         okHttpClientProvider: OkHttpClientProviderInterface,
-    ): Call.Factory {
+    ): OkHttpClient {
         return okHttpClientProvider.getOkHttpClient(BuildConfig.DEV_PIN_CERTIFICATE)
             .addInterceptor(provideHttpLogger)
             .addInterceptor(provideHeaderInterceptor)
@@ -80,10 +81,11 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val build = Retrofit.Builder()
-            .baseUrl("")
+        val builder = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
-        return build.build()
+        return builder.build()
     }
 
     @Provides

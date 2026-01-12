@@ -3,7 +3,6 @@ package com.example.data.di
 import com.example.data.BuildConfig
 import com.example.data.connectivity.NetworkMonitorInterface
 import com.example.data.constants.Authentication_INTERCEPTOR_TAG
-import com.example.data.constants.CLIENT_ID_TAG
 import com.example.data.constants.CONNECTIVITY_INTERCEPTOR_TAG
 import com.example.data.constants.HEADER_INTERCEPTOR_TAG
 import com.example.data.constants.IO_DISPATCHER_TAG
@@ -53,11 +52,9 @@ class InterceptorModule {
     @Singleton
     @Named(HEADER_INTERCEPTOR_TAG)
     fun provideHeaderInterceptor(
-        @Named(CLIENT_ID_TAG) clientId: String,
         @Named(LANGUAGE_TAG) language: () -> Locale,
     ): Interceptor {
         return HeaderInterceptor(
-            clientId = clientId,
             language = language,
         )
     }

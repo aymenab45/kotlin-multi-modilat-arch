@@ -11,7 +11,7 @@ const val IO_DISPATCHER_TAG = "IODispatcher"
 const val LANGUAGE_TAG = "Language"
 const val REFRESH_TOKEN_TAG = "RefreshToken"
 const val HEADER_INTERCEPTOR_TAG = "HeaderInterceptor"
-const val Authentication_INTERCEPTOR_TAG = "HeaderInterceptor"
+const val Authentication_INTERCEPTOR_TAG = "AuthenticationInterceptor"
 
 const val CONNECTIVITY_INTERCEPTOR_TAG = "ConnectivityInterceptor"
 const val LOGGING_INTERCEPTOR_TAG = "OkHttpLoggingInterceptor"

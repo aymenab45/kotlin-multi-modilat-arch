@@ -2,10 +2,8 @@ package com.example.login.presentation.validator
 
 import com.example.login.presentation.error.LoginError
 
-
 private const val USERNAME_LENGTH = 5
 private const val PASSWORD_MIN_LENGTH = 7
-
 
 object LoginValidator {
 
@@ -31,7 +29,6 @@ object LoginValidator {
         return passwordError is LoginError.NoError && userNameError is LoginError.NoError
     }
 
-
     private fun String.isAlphaNumericWithSpecialCharacters(): Boolean {
         val containsLowerCase = any { it.isLowerCase() }
         val containsUpperCase = any { it.isUpperCase() }
@@ -47,7 +44,4 @@ object LoginValidator {
         userName.count() > USERNAME_LENGTH
 
     private fun String.isAlphaNumeric() = matches("[a-zA-Z0-9]+".toRegex())
-
-
-
 }

@@ -7,8 +7,9 @@ import com.example.login.data.mapper.LoginMapper
 import com.example.login.data.requests.LoginRequestBody
 import com.example.login.data.service.LoginService
 import com.example.login.domain.model.User
+import javax.inject.Inject
 
-class LoginRemoteImplementer(private val networkDataSource: NetworkDataSource<LoginService>, private val loginMapper: LoginMapper) : LoginRemote {
+class LoginRemoteImplementer @Inject constructor(private val networkDataSource: NetworkDataSource<LoginService>, private val loginMapper: LoginMapper) : LoginRemote {
 
     override suspend fun login(username: String, password: String): OutCome<User> {
         return networkDataSource.performRequest(

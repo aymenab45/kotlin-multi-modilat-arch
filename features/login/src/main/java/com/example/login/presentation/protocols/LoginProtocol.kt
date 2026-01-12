@@ -2,24 +2,22 @@ package com.example.login.presentation.protocols
 
 import com.example.login.presentation.error.LoginError
 
-sealed class LoginActions {
+sealed class LoginInput {
 
-    data class UserNameUpdated(val userName: String) : LoginActions()
-    data class PasswordUpdated(val password: String) : LoginActions()
-    data object LoginClicked : LoginActions()
-    data object RegisterClicked : LoginActions()
+    data class UserNameUpdated(val userName: String) : LoginInput()
+    data class PasswordUpdated(val password: String) : LoginInput()
+    data object LoginClicked : LoginInput()
+    data object RegisterClicked : LoginInput()
 }
 
-
-sealed class LoginEvents {
-    data object NavigateToMain : LoginEvents()
-    data object NavigateToRegister : LoginEvents()
-    data object ShowLoading : LoginEvents()
-    data class ShowError(val error: LoginError) : LoginEvents()
+sealed class LoginOutput {
+    data object NavigateToMain : LoginOutput()
+    data object NavigateToRegister : LoginOutput()
+    data object ShowLoading : LoginOutput()
+    data class ShowError(val error: LoginError) : LoginOutput()
 }
 
-
-data class LoginState (
+data class LoginState(
     val userName: String = "",
     val password: String = "",
     val isLoading: Boolean = false,
@@ -27,10 +25,8 @@ data class LoginState (
     val isLoginButtonEnabled: Boolean = false,
     val userNameError: LoginError = LoginError.NoEntry,
     val passwordError: LoginError = LoginError.NoEntry,
-){
+) {
     fun showPasswordError(): Boolean = passwordError != LoginError.NoError && passwordError != LoginError.NoEntry
 
     fun showUserNameError(): Boolean = userNameError != LoginError.NoError && userNameError != LoginError.NoEntry
 }
-
-

@@ -51,10 +51,12 @@ class ConfigModule {
     @Provides
     @Singleton
     @Named(CLIENT_ID_TAG)
-    fun provideClientId(sessionDataStore: SessionsDataStoreInterface): String {
+    fun provideClientId(sessionDataStore: SessionsDataStoreInterface): () -> String {
         val userID = runBlocking { sessionDataStore.getUserID() }
-        return userID.ifEmpty {
-            ""
+        return {
+            userID.ifEmpty {
+                ""
+            }
         }
     }
 }
