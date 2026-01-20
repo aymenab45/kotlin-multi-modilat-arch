@@ -1,4 +1,6 @@
+import deps.androidX
 import deps.debugImplementation
+import deps.domainModule
 import deps.testAndroidImplementation
 import deps.testImplementation
 import plugs.SharedLibraryGradlePlugin
@@ -14,6 +16,8 @@ android {
 }
 
 dependencies {
+    androidX()
+    domainModule()
     testImplementation()
     testAndroidImplementation()
     debugImplementation()

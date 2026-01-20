@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty_message">There is no data, Please try again</string>
+    <string name="loading_message">Please Wait...</string>
+    <string name="cannot_proceed">Cannot Proccesed</string>
+    <string name="retry_again">Retry</string>
+    <string name="dimiss">Close</string>
+</resources>

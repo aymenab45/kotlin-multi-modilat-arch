@@ -7,7 +7,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-const val BASE_URL = "https://api.mockfly.dev/mocks/6ce0c106-cce3-4d84-a21d-0afc4865f7d2"
+const val BASE_URL = "https://api.mockfly.dev/mocks/65933e1a-d663-4351-af20-db0bae81dc23"
 const val EMAIL = "email"
 
 interface LoginService {

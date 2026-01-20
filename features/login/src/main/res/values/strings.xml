@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_entry">No Entry</string>
+    <string name="no_error">No Error</string>
+    <string name="incorrect_user_name">Incorrect UserName</string>
+    <string name="incorrect_password">Password must contain alpha and numbers and special char</string>
+    <string name="invalid_name_length">User name length must be upper 4</string>
+    <string name="invalid_password_length">Password must be length more than 8 char</string>
+    <string name="username">UserName</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+</resources>

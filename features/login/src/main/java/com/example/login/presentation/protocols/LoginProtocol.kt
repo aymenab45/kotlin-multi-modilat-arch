@@ -13,7 +13,6 @@ sealed class LoginInput {
 sealed class LoginOutput {
     data object NavigateToMain : LoginOutput()
     data object NavigateToRegister : LoginOutput()
-    data object ShowLoading : LoginOutput()
     data class ShowError(val error: LoginError) : LoginOutput()
 }
 

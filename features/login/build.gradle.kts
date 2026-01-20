@@ -3,6 +3,7 @@ import deps.dataModule
 import deps.debugImplementation
 import deps.domainModule
 import deps.hilt
+import deps.presentationModule
 import deps.retrofit
 import deps.room
 import deps.testAndroidImplementation
@@ -25,7 +26,7 @@ android {
 }
 
 dependencies {
-
+    presentationModule()
     dataModule()
     domainModule()
     androidX()
