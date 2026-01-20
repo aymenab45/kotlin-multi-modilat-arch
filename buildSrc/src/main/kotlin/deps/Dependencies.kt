@@ -12,6 +12,9 @@ object Dependencies {
     const val ANDROIDX_UI_TOOLING_PREVIEW = "androidx.compose.ui:ui-tooling-preview:${DependenciesVersions.COMPOSE_UI}"
     const val ANDROIDX_MATERIAL3= "androidx.compose.material3:material3:${DependenciesVersions.MATERIAL3}"
 
+    const val navigation = "androidx.navigation:navigation-compose:${DependenciesVersions.NAVIGATION}"
+    const val googleJson = "com.google.code.gson:gson:${DependenciesVersions.GOOGLE_GSON}"
+
     const val COMPOSE_MATERIAL =
         "androidx.compose.material:material:${DependenciesVersions.COMPOSE_MATERIAL}"
     const val COMPOSE_COMPILER =

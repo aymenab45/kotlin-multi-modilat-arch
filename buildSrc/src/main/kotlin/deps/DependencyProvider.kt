@@ -58,6 +58,8 @@ fun DependencyHandler.androidX(){
     implementation(Dependencies.COMPOSE_MATERIAL)
     implementation(Dependencies.COMPOSE_COMPILER)
     implementation(Dependencies.COMPOSE_RUNTIME)
+    implementation(Dependencies.navigation)
+    implementation(Dependencies.googleJson)
 }
 
 fun DependencyHandler.loginModule() {
