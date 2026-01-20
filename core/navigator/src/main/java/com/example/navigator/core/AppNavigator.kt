@@ -1,4 +1,4 @@
-package com.example.navigator
+package com.example.navigator.core
 
 import androidx.navigation.NavOptionsBuilder
 import com.example.navigator.event.NavigatorEvent
@@ -16,6 +16,5 @@ interface AppNavigator {
     )
 
     val destinations: Flow<NavigatorEvent>
-
 
 }
