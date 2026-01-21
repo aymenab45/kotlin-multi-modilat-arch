@@ -1,7 +1,7 @@
 package com.example.login.data.mapper
 
 import com.example.login.data.response.UserResponse
-import com.example.login.domain.model.User
+import com.example.domain.model.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 

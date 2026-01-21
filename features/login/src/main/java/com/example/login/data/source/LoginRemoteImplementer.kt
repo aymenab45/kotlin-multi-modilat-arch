@@ -6,7 +6,7 @@ import com.example.domain.result.OutCome
 import com.example.login.data.mapper.LoginMapper
 import com.example.login.data.requests.LoginRequestBody
 import com.example.login.data.service.LoginService
-import com.example.login.domain.model.User
+import com.example.domain.model.User
 import javax.inject.Inject
 
 class LoginRemoteImplementer @Inject constructor(private val networkDataSource: NetworkDataSource<LoginService>, private val loginMapper: LoginMapper) : LoginRemote {

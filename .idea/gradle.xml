@@ -31,8 +31,10 @@
             <option value="$PROJECT_DIR$/core/presentation" />
             <option value="$PROJECT_DIR$/core/protodatastore" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/features/login" />
             <option value="$PROJECT_DIR$/features/setting" />
+            <option value="$PROJECT_DIR$/features/signUp" />
             <option value="$PROJECT_DIR$/lib" />
           </set>
         </option>

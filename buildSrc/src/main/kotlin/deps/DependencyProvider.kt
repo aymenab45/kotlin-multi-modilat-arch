@@ -24,9 +24,13 @@ fun DependencyHandler.room(){
 }
 fun DependencyHandler.dataStore(){
     implementation(Dependencies.DATASTORE)
-    implementation(Dependencies.KOTLIN_SERILAIZATIONS)
     implementation(Dependencies.KOTLIN_COLLECTIONS)
 }
+
+fun DependencyHandler.kotlinx(){
+    implementation(Dependencies.KOTLIN_SERILAIZATIONS)
+}
+
 
 fun DependencyHandler.protoDataStore() {
     implementation(Dependencies.DATASTORE)
