@@ -12,9 +12,8 @@ interface AppNavigator {
 
     fun navigate(
         route: String,
-        builder: NavOptionsBuilder.() -> Unit = { launchSingleTop =true}
+        builder: NavOptionsBuilder.() -> Unit = { launchSingleTop = true },
     )
 
     val destinations: Flow<NavigatorEvent>
-
 }

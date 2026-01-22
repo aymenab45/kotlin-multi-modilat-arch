@@ -78,6 +78,7 @@ class LoginViewModel @Inject constructor(
                 error = {
                     _stateRendererMutableState.value = StateRenderer.ErrorPopup(loginViewState, it)
                 },
+
             )
         }
     }

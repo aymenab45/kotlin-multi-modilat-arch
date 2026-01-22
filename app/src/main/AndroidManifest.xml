@@ -19,6 +19,16 @@
             android:exported="false"
             android:theme="@style/Theme.MultiModularApplication">
         </activity>
+        <activity
+            android:name=".RoutingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

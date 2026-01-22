@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Singleton
 
 @Singleton
-class AppNavigatorImpl() :AppNavigator {
+class AppNavigatorImpl() : AppNavigator {
     private val navigationEvents = Channel<NavigatorEvent>()
 
-    override fun navigateUp(): Boolean  = navigationEvents.trySend(NavigatorEvent.NavigateUp).isSuccess
+    override fun navigateUp(): Boolean = navigationEvents.trySend(NavigatorEvent.NavigateUp).isSuccess
 
     override fun popBackStack() {
         navigationEvents.trySend(NavigatorEvent.PopBackStack)
@@ -19,12 +19,11 @@ class AppNavigatorImpl() :AppNavigator {
 
     override fun navigate(
         route: String,
-        builder: NavOptionsBuilder.() -> Unit
+        builder: NavOptionsBuilder.() -> Unit,
     ) {
         navigationEvents.trySend(NavigatorEvent.Directions(route, builder))
     }
 
     override val destinations: Flow<NavigatorEvent>
         get() = navigationEvents.receiveAsFlow()
-
 }

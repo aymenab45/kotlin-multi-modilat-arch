@@ -3,12 +3,15 @@ import deps.dataModule
 import deps.debugImplementation
 import deps.domainModule
 import deps.hilt
+import deps.homeModule
 import deps.loginModule
+import deps.navigatorModule
 import deps.okHttp
 import deps.presentationModule
 import deps.protoDataStoreModule
 import deps.retrofit
 import deps.room
+import deps.signupModule
 import deps.testAndroidImplementation
 import deps.testImplementation
 
@@ -87,9 +90,13 @@ android {
 
 dependencies {
     // dataStoreModule()
+    navigatorModule()
+
     domainModule()
     dataModule()
     presentationModule()
+    signupModule()
+    homeModule()
     loginModule()
     //  dataStoreModule()
     protoDataStoreModule()

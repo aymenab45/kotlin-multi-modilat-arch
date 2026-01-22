@@ -69,9 +69,18 @@ fun DependencyHandler.androidX(){
 fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
 }
+fun DependencyHandler.signupModule() {
+    moduleImplementation(project(":features:signUp"))
+}
+fun DependencyHandler.homeModule() {
+    moduleImplementation(project(":features:home"))
+}
 
 fun DependencyHandler.settingModule(){
     moduleImplementation(project(":features:setting"))
+}
+fun DependencyHandler.navigatorModule(){
+    moduleImplementation(project(":core:navigator"))
 }
 
 fun DependencyHandler.dataModule(){

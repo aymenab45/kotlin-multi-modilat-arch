@@ -3,6 +3,7 @@ import deps.dataModule
 import deps.debugImplementation
 import deps.domainModule
 import deps.hilt
+import deps.navigatorModule
 import deps.presentationModule
 import deps.retrofit
 import deps.room
@@ -36,4 +37,5 @@ dependencies {
     hilt()
     room()
     retrofit()
+    navigatorModule()
 }

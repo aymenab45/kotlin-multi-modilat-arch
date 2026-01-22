@@ -2,11 +2,11 @@ package com.example.login.data.source
 
 import com.example.data.mapper.toDomain
 import com.example.data.source.NetworkDataSource
+import com.example.domain.model.User
 import com.example.domain.result.OutCome
 import com.example.login.data.mapper.LoginMapper
 import com.example.login.data.requests.LoginRequestBody
 import com.example.login.data.service.LoginService
-import com.example.domain.model.User
 import javax.inject.Inject
 
 class LoginRemoteImplementer @Inject constructor(private val networkDataSource: NetworkDataSource<LoginService>, private val loginMapper: LoginMapper) : LoginRemote {

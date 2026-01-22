@@ -1,8 +1,6 @@
 package com.example.navigator.destinitions
 
-
 const val SignUp_ROOT = "home-root"
-class SignUpDestination : NavigationDestination {
+object SignUpDestination : NavigationDestination {
     override fun destination(): String = Screens.SignUpScreenRoot.route
 }
-

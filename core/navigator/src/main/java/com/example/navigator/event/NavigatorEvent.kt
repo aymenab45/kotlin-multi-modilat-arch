@@ -10,7 +10,6 @@ sealed class NavigatorEvent {
 
     data class Directions(
         val destination: String,
-        val builder : NavOptionsBuilder.() -> Unit = {}
+        val builder: NavOptionsBuilder.() -> Unit = {},
     ) : NavigatorEvent()
-
 }

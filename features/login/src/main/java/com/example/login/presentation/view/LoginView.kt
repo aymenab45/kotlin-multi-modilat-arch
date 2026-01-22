@@ -22,15 +22,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.domain.model.toJson
 import com.example.login.R
 import com.example.login.presentation.protocols.LoginInput
 import com.example.login.presentation.protocols.LoginOutput
 import com.example.login.presentation.protocols.LoginState
 import com.example.login.presentation.viewmodel.LoginViewModel
+import com.example.navigator.core.AppNavigator
+import com.example.navigator.destinitions.HomeDestination
+import com.example.navigator.destinitions.SignUpDestination
 import com.example.presentation.StateRenderer
 
 @Composable
-fun LoginScreen(loginViewModel: LoginViewModel) {
+fun LoginScreen(appNavigator: AppNavigator) {
+    val loginViewModel: LoginViewModel = hiltViewModel()
+
     val stateRenderer by loginViewModel.stateRenderer.collectAsState()
 
     // React to viewOutput events
@@ -38,8 +45,12 @@ fun LoginScreen(loginViewModel: LoginViewModel) {
     LaunchedEffect(loginViewModel) {
         loginViewModel.event.collect { output ->
             when (output) {
-                is LoginOutput.NavigateToMain -> TODO()
-                is LoginOutput.NavigateToRegister -> TODO()
+                is LoginOutput.NavigateToMain -> {
+                    appNavigator.navigate(HomeDestination.createHome(output.user.toJson(), output.user.userName, 24))
+                }
+                is LoginOutput.NavigateToRegister -> {
+                    appNavigator.navigate(SignUpDestination.destination())
+                }
                 is LoginOutput.ShowError -> TODO()
             }
         }
@@ -61,9 +72,7 @@ fun LoginScreen(loginViewModel: LoginViewModel) {
             // ScreeUiContent(updatedState, loginViewModel)
         }
         onSuccessState {
-            println("heloooo:")
-            println(it.userName)
-            // ScreeUiContent(updatedState, loginViewModel)
+            appNavigator.navigate(HomeDestination.createHome(it.toJson(), it.userName, 24))
         }
     }
 }
@@ -97,7 +106,7 @@ fun ScreeUiContent(loginViewState: LoginState, loginViewModel: LoginViewModel) {
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { loginViewModel.login() },
+                onClick = { loginViewModel.setAction(LoginInput.LoginClicked) },
             ) {
                 Text(text = "Login")
             }
